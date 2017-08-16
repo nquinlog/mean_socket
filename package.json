@@ -1,0 +1,13 @@
+{
+    "name": "boneApp",
+    "version": "0.0.1",
+    "description": "applicaation for beaglebone mean stack",
+    "dependencies": {
+        "socket.io": "latest",
+        "bonescript": "latest",
+        "async": "latest"
+    },
+    "author": "Nels Quinlog",
+    "repository": "https://github.com/nquinlog/mean_socket.git",
+    "license": "GFDL-1.3"
+}

@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <title>The Servo Controller</title>
+        
+        <script src="/socket.io/socket.io.js"></script>
+<script>
+var tag = null;
+
+  var socket = io.connect();
+  
+  socket.on('message', function (data) {
+    socket.emit('message', { value: 'servo begin' });
+    tag = document.getElementById('banner');
+    tag.innerHTML = data['title'];
+    tag = document.getElementById('entered');
+    tag.value = data['value'];
+  });
+  
+  socket.on('bounce', function(data) {
+      tag = document.getElementById('clicker');
+      tag.innerHTML = data['beat'];
+	  tag = document.getElementById('entered');
+	  tag.value = data['beat'];
+  });
+  
+  function sendIt() {
+      var setting = document.getElementById('entered').value;
+      socket.emit('news', {value: setting});
+      tag = document.getElementById('clicker');
+      tag.innerHTML = setting;
+  };
+</script>
+    </head>
+    <body>
+        
+        <h1 id="banner">text!!!!!!!!!!!!!!!!!!1111111111111111111111!!!!!11111</h1>
+        <input id="entered" type="range" min="0" max="95" onchange="sendIt()" />
+        <button id="clicker" type="button" onclick="sendIt()" >go</button>
+        
+    </body>
+    
+</html>
+
+
+
+
